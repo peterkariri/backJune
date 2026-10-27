@@ -1,11 +1,16 @@
 const express=require("express")
 const app=express()
+const path=require("path")
 const PORT=3000
 
-app.set("view engine","ejs")
+app.set("view engine","ejs") //used to set the view eninge to expressejs
+
+//configuring the express to serve/render public files 
+
+app.use(express.static(path.join(__dirname,"public")))
 
 app.get("/",(req,res)=>{
-    res.send("hello this is the response")
+    res.render("home")
 })
 app.get("/login",(req,res)=>{
  res.render("login")
